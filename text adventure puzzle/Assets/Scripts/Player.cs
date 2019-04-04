@@ -39,11 +39,15 @@ public class Player : MonoBehaviour
                         PrintInventory();
                         GameManager.Instance.LoadNextScene();
                     }
+                    else
+                    {
+                        Infotext.Instance.UpdateInfo($"You {split[0]} item {split[1]}. It didn't do anything.");
+                    }
                 }
 
                 else
                 {
-                    Infotext.Instance.UpdateInfo($"You {split[0]} item {split[1]}. It didn't do anything.");
+                    Infotext.Instance.UpdateInfo($"You you dont have  {split[1]}.");
                 }
             }
             else
@@ -118,6 +122,10 @@ public class Player : MonoBehaviour
                     }
                     
                     break;
+
+                case "quit":
+                    GameManager.Instance.QuitGame();
+                    break;
                 default:
                     Infotext.Instance.UpdateInfo("Improper command given!");
                     break;
@@ -137,13 +145,13 @@ public class Player : MonoBehaviour
                 if (inventory[i] == item)
                 {
 
-                    Infotext.Instance.UpdateInfo($"Löytyi tavara {item}");
+                    //Infotext.Instance.UpdateInfo($"Löytyi tavara {item}");
                     tmp = item;
                     break;
                 }
                 else if (inventory[i] == inventory.Last() && inventory[i] != item)
                 {
-                    Infotext.Instance.UpdateInfo($"Ei löydy {item} esinettä.Kirjoita uusi");
+                    //Infotext.Instance.UpdateInfo($"Ei löydy {item} esinettä.Kirjoita uusi");
                     tmp = "";
                 }
                 i++;

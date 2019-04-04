@@ -67,8 +67,9 @@ public class GameManager : MonoBehaviour
         return tmp;
     }
 
-    public void UpdateLookObjects(string[] objs)
+    public void QuitGame()
     {
-
+        //Application.Quit();
+        Debug.Log("Quit game.");
     }
 }

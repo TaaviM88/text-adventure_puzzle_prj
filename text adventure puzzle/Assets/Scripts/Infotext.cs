@@ -32,7 +32,10 @@ public class Infotext : MonoBehaviour
     {
         infotext.text = "";
     }
-
+    public void EmptyInventory()
+    {
+        inventorytext.text = "";
+    }
     public void UpdateInventory(string text)
     {
         inventorytext.text += $"{text} \n";

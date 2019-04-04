@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     RoomController roomWord;
     string correctWord;
 
+    string[] lookObjects;
+
     bool initialBaseScene = false;
     // Start is called before the first frame update
     void Start()
@@ -55,5 +57,18 @@ public class GameManager : MonoBehaviour
     public string ReturnCorrectWord()
     {
         return correctWord;  
+    }
+
+    public string LookObject(string obj)
+    {
+        string tmp = "";
+
+
+        return tmp;
+    }
+
+    public void UpdateLookObjects(string[] objs)
+    {
+
     }
 }

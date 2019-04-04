@@ -4,13 +4,19 @@ using UnityEngine;
 using System.Linq;
 public class Player : MonoBehaviour
 {
-    public InventoryData inv;
+    //public InventoryData inv;
+    //string []  inventory;
+    List<string> inventory = new List<string>();
     RoomController roomWord;
     bool hasStarted = false;
+
     // Start is called before the first frame update
     void Start()
     {
-        PrintInventory();
+        if(inventory.Any())
+        {
+            PrintInventory();
+        }
     }
 
 
@@ -18,19 +24,81 @@ public class Player : MonoBehaviour
     {
         string[] split = inputSentence.Split(' ');
         //split[0].Contains("use") && split[1].Contains("")
+       
         if(split[0].Contains("use"))
         {
-            if(CheckIfInventoryContainsItem(split[1]) != "")
+            if (split.Length > 1)
             {
-                if (split[1] == GameManager.Instance.ReturnCorrectWord())
+
+                if (CheckIfInventoryContainsItem(split[1]) != "")
                 {
-                    Infotext.Instance.UpdateInfo($"You {split[0]} item {split[1]}. That was correct item. Good job!");
-                    GameManager.Instance.LoadNextScene();
+                    if (split[1] == GameManager.Instance.ReturnCorrectWord())
+                    {
+                        Infotext.Instance.UpdateInfo($"You {split[0]} item {split[1]}. That was correct item. Good job!");
+                        inventory.Remove(split[1]);
+                        PrintInventory();
+                        GameManager.Instance.LoadNextScene();
+                    }
+                }
+
+                else
+                {
+                    Infotext.Instance.UpdateInfo($"You {split[0]} item {split[1]}. It didn't do anything.");
                 }
             }
             else
             {
-                Infotext.Instance.UpdateInfo($"You {split[0]} item {split[1]}. It didn't do anything.");
+                Infotext.Instance.UpdateInfo($"{split[0]} what?");
+            }
+        }
+
+        else if(split[0].Contains("look"))
+        {
+            if (split.Length > 1)
+            {
+                if (RoomController.Instance.ReturnLookObject(split[1]) != "")
+                {
+                    if (split[1] == RoomController.Instance.ReturnLookObject(split[1]))
+                    {
+                        Infotext.Instance.UpdateInfo($"You {split[0]} item {split[1]}. It looks like you can take it.");
+                    }
+                    else
+                    {
+                        Infotext.Instance.UpdateInfo($"There is nothing intresting");
+                    }
+                }
+            }
+            else
+            {
+                Infotext.Instance.UpdateInfo($"{split[0]} what?");
+            }
+        }
+
+        else if(split[0].Contains("take"))
+        {
+            if (split.Length > 1)
+            {
+                if (split[1] != CheckIfInventoryContainsItem(split[1]))
+                {
+                    if (split[1] == RoomController.Instance.ReturnLookObject(split[1]))
+                    {
+                        inventory.Add(split[1]);
+                        Infotext.Instance.UpdateInfo($"You take {split[1]}.");
+                        PrintInventory();
+                    }
+                    else
+                    {
+                        Infotext.Instance.UpdateInfo($"You can't take {split[1]}.");
+                    }
+                }
+                else
+                {
+                    Infotext.Instance.UpdateInfo($"You already have {split[1]}.");
+                }
+            }
+            else
+            {
+                Infotext.Instance.UpdateInfo($"{split[0]} what?");
             }
         }
 
@@ -55,40 +123,35 @@ public class Player : MonoBehaviour
                     break;
             }
         }
-        
-            
-        /*
-        if (inputSentence.Contains("inventory"))
-        {
-            PrintInventory();
-        }
 
-        if(inputSentence.Contains("a"))
-        {
-            Infotext.Instance.UpdateInfo($"{inv.itemName.Length}");
-        }
-        
-        if()*/
     }
 
     public string CheckIfInventoryContainsItem(string item)
     {
         string tmp = "";
-        for (int i = 0; i < inv.itemName.Length;)
+        if (inventory.Any())
         {
-            if (inv.itemName[i] == item)
-            {
 
-                Infotext.Instance.UpdateInfo($"Löytyi tavara {item}");
-                tmp = item;
-                break;
-            }
-            else if (inv.itemName[i] == inv.itemName.Last() && inv.itemName[i] != item)
+            for (int i = 0; i < inventory.Count;)
             {
-                Infotext.Instance.UpdateInfo($"Ei löydy {item} esinettä.Kirjoita uusi");
-                tmp = "";
-            }        
+                if (inventory[i] == item)
+                {
+
+                    Infotext.Instance.UpdateInfo($"Löytyi tavara {item}");
+                    tmp = item;
+                    break;
+                }
+                else if (inventory[i] == inventory.Last() && inventory[i] != item)
+                {
+                    Infotext.Instance.UpdateInfo($"Ei löydy {item} esinettä.Kirjoita uusi");
+                    tmp = "";
+                }
                 i++;
+            }
+        }
+        else
+        {
+            Debug.Log(inventory.Count);
         }
 
         if (tmp != "")
@@ -102,11 +165,17 @@ public class Player : MonoBehaviour
 
     public void PrintInventory()
     {
-        for (int i = 0; i < inv.itemName.Length;)
+        Infotext.Instance.EmptyInventory();
+        for (int i = 0; i < inventory.Count;)
         {
-            Infotext.Instance.UpdateInventory($"{inv.itemName[i]}");
+            Infotext.Instance.UpdateInventory($"{inventory[i]}");
             i++;
         }
     }
 
+
+    public void AddItemToInventory(string obj)
+    {
+        inventory.Add(obj);
+    }
 }

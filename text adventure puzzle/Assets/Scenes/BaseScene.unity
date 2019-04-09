@@ -396,8 +396,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -200, y: 3}
-  m_SizeDelta: {x: 200, y: 75.79999}
+  m_AnchoredPosition: {x: -190.17, y: 3}
+  m_SizeDelta: {x: 190.17, y: 77.59}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &217488360
 MonoBehaviour:
@@ -419,13 +419,17 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Take
+  m_text: '!take
 
-    Use
+    !use
 
-    Look
+    !look
 
-'
+    !talk
+
+    !info
+
+    !forward'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -460,7 +464,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 513
+  m_textAlignment: 2049
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -470,7 +474,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 17
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -491,15 +495,15 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 53.111687, y: 7.113588, z: -0.63384676, w: -63.961956}
+  m_margin: {x: 53.111687, y: 7.113588, z: -0.63384676, w: -80.04404}
   m_textInfo:
     textComponent: {fileID: 217488360}
-    characterCount: 14
+    characterCount: 37
     spriteCount: 0
-    spaceCount: 3
-    wordCount: 3
+    spaceCount: 5
+    wordCount: 6
     linkCount: 0
-    lineCount: 3
+    lineCount: 6
     pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
@@ -757,7 +761,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.4068799, y: -9.230541, z: -0.63384676, w: -1.4246222}
+  m_margin: {x: 0.4068799, y: -9.230541, z: -0.63384676, w: -46.37237}
   m_textInfo:
     textComponent: {fileID: 745834241}
     characterCount: 0
@@ -807,7 +811,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -79}
+  m_AnchoredPosition: {x: 0, y: -59.4}
   m_SizeDelta: {x: 200, y: 75.79999}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &925638537
@@ -820,6 +824,7 @@ GameObject:
   m_Component:
   - component: {fileID: 925638539}
   - component: {fileID: 925638538}
+  - component: {fileID: 925638540}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -853,6 +858,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &925638540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925638537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76f4239b27ca4f346b28b5dc51e89d47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  channel_name: mutti88
 --- !u!1 &948877338
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,6 +1028,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 948877338}
   m_CullTransparentMesh: 0
+--- !u!1 &1016978029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1016978031}
+  - component: {fileID: 1016978030}
+  m_Layer: 0
+  m_Name: TwitchApi
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1016978030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016978029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 519abfe514150ca48ab83736f3c01339, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  client: {fileID: 925638537}
+--- !u!4 &1016978031
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016978029}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.9930573, y: 150.36172, z: -68.71382}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1058661107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1497,7 +1559,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: 'Type: start'
+  m_text: 'Type: !start'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1566,7 +1628,7 @@ MonoBehaviour:
   m_margin: {x: -280.02203, y: 0, z: -221.4899, w: -8.702795}
   m_textInfo:
     textComponent: {fileID: 1456261097}
-    characterCount: 11
+    characterCount: 12
     spriteCount: 0
     spaceCount: 1
     wordCount: 2

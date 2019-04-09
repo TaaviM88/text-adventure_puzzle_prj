@@ -10,11 +10,12 @@ public class GameManager : MonoBehaviour
     string tmpSceneName = "";
 
     RoomController roomWord;
-    string correctWord;
+    GameObject correctWord;
 
     string[] lookObjects;
 
     bool initialBaseScene = false;
+    bool canMoveNextScene = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,27 +50,29 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void UpdateCorrectWord(string w)
+    public void UpdateCorrectWord(GameObject w)
     {
         correctWord = w;
     }
 
-    public string ReturnCorrectWord()
+    public GameObject ReturnCorrectWord()
     {
         return correctWord;  
-    }
-
-    public string LookObject(string obj)
-    {
-        string tmp = "";
-
-
-        return tmp;
     }
 
     public void QuitGame()
     {
         //Application.Quit();
         Debug.Log("Quit game.");
+    }
+
+    public bool CanMoveNextScene()
+    {
+        return canMoveNextScene;
+    }
+
+    public void ChangeCanMoveNextScene(bool b)
+    {
+        canMoveNextScene = b;
     }
 }

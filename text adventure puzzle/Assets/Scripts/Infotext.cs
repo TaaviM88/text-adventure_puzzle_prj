@@ -25,7 +25,7 @@ public class Infotext : MonoBehaviour
 
     public void UpdateInfo(string text)
     {
-        infotext.text = $" {text} ";
+        infotext.text = $"{text}";
     }
 
     public void EmptyInfo()
@@ -39,5 +39,10 @@ public class Infotext : MonoBehaviour
     public void UpdateInventory(string text)
     {
         inventorytext.text += $"{text} \n";
+    }
+
+    public string ReturnCurrentInfoText()
+    {
+        return infotext.text;
     }
 }

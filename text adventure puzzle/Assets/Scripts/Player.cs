@@ -36,8 +36,9 @@ public class Player : MonoBehaviour
                 #region
                 if (hasStarted == false)
                     {
-                        GameManager.Instance.LoadNextScene();
-                        hasStarted = true;
+                    //GameManager.Instance.LoadNextScene();
+                    GameManager.Instance.FadeToLevel();
+                    hasStarted = true;
                     }
                 #endregion
                 break;
@@ -53,7 +54,8 @@ public class Player : MonoBehaviour
             case "!forward":
                 if(GameManager.Instance.CanMoveNextScene())
                 {
-                    GameManager.Instance.LoadNextScene();
+                    //GameManager.Instance.LoadNextScene();
+                    GameManager.Instance.FadeToLevel();
                 }
                 else
                 {

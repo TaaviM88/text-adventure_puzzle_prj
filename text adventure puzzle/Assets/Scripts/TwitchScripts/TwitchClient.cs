@@ -7,6 +7,9 @@ using System;
 using TwitchLib.Client.Events;
 using TMPro;
 using UnityEngine.UI;
+using TTS;
+
+
 
 public class TwitchClient : MonoBehaviour
 {
@@ -15,7 +18,6 @@ public class TwitchClient : MonoBehaviour
     private string channel_name = "mutti88";
     bool hasConnected = false;
     ConnectionCredentials credentials;
-
     Player player;
 
     // Start is called before the first frame update
@@ -42,8 +44,8 @@ public class TwitchClient : MonoBehaviour
         hasConnected = true;
 
         if (!string.IsNullOrWhiteSpace(e.AutoJoinChannel))
-        //ChatLog.Instance.InfoText($"The bot will now attempt to automatically join the channel provided when the Initialize method was called: {e.AutoJoinChannel}");
-        Debug.Log($"The bot will now attempt to automatically join the channel provided when the Initialize method was called: {e.AutoJoinChannel}");
+            //ChatLog.Instance.InfoText($"The bot will now attempt to automatically join the channel provided when the Initialize method was called: {e.AutoJoinChannel}");
+            Debug.Log($"The bot will now attempt to automatically join the channel provided when the Initialize method was called: {e.AutoJoinChannel}");
     }
 
     private void OnJoinedChannel(object sender, TwitchLib.Client.Events.OnJoinedChannelArgs e)
@@ -100,6 +102,7 @@ public class TwitchClient : MonoBehaviour
     {
         string message = e.ChatMessage.Message;
         player.GetSentence(e.ChatMessage.Message);
+        TTSTest.Instance.GetMessage($"User {e.ChatMessage.DisplayName} says {e.ChatMessage.Message}");
         /*   if (RaffleList.Instance.GetWinnerName() == null)
            {
                ChatLog.Instance.Log(e.ChatMessage.DisplayName + ": " + message);
@@ -117,3 +120,5 @@ public class TwitchClient : MonoBehaviour
         client.LeaveChannel(channel_name);
     }
 }
+    
+

@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     bool initialBaseScene = false;
     bool canMoveNextScene = true;
+
+    public Animator anime;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,7 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+
     }
 
   
@@ -75,4 +78,11 @@ public class GameManager : MonoBehaviour
     {
         canMoveNextScene = b;
     }
+
+    public void FadeToLevel()
+    {
+        anime.SetTrigger("FadeOut");
+    }
+
+    
 }
